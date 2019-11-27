@@ -11,9 +11,9 @@ class WordWolf{
     }
 
     initThemeWords(){
-        let themeWords = ["プロテイン", "ビタミン"];
-        this.majorWord = themeWords[0];
-        this.minorWord = themeWords[1];
+        let themeWords = ["プロテイン", "ビタミン", "カルシウム", "食物繊維"];
+        this.majorWord = themeWords.splice(getRandomInt(themeWords.length), 1)[0];
+        this.minorWord = themeWords.splice(getRandomInt(themeWords.length), 1)[0];
     }
     
 }
