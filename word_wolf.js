@@ -36,6 +36,15 @@ function getPlayersNames(){
     }));
 }
 
+function startWordWolf(){
+    let players = document.getElementsByClassName("players");
+    let wordWolfGame = new WordWolf(Array.prototype.map.call(players, function(element){
+        return element.value;
+    }));
+    sessionStorage.setItem('current_wf_game', JSON.stringify(wordWolfGame));
+    window.location.href="player_confirm.html";
+}
+
 window.onload = function(){
     sessionStorage.setItem('key', 'value');
 }
