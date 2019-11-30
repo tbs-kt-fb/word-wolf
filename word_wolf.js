@@ -7,6 +7,7 @@ class WordWolf{
         this.players = players.map(function(name, index, array){
             return new Player(name, (index == minorNumber)? this.minorWord : this.majorWord, index != minorNumber)
         },this);
+        this.willConfirmWordPlayers = this.players;
    
     }
 

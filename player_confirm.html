@@ -14,17 +14,26 @@
 <body>
     <div class="container">
         <div class="row">
-            <h1>プレーヤー確認</h1>
+            <h1>テーマワード確認</h1>
         </div>
         <div class="row">
-            <p>〇〇さんの確認画面です</p>
+            <p><span id="plyaer_name"></span>さんのテーマワードの確認画面です</p>
         </div>
-        <div>
-            <button onclick="onClickCheckButton()">check</button>
+        <div class="row">
+            <button onclick="showThemeArea()">テーマを確認する</button>
         </div>
-        <div>
-            <button onclick="window.location.href='word_confirm.html'">テーマを確認する</button>
+        <div id="theme_word_area" hidden>
+            <div class="row">
+                <p>テーマワードは</p>
+            </div>
+            <div class="row">
+                <p><span id="theme_word"></span>です</p>
+            </div>
+            <div class="row">
+                <button onclick="nextPage()">確認した</button>
+            </div>
         </div>
+
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
