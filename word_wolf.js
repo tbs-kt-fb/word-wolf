@@ -39,7 +39,10 @@ function getRandomInt(max) {
 }
 
 
-function startWordWolf() {
+function startWordWolf(button) {
+    button.setAttribute("class", "btn btn-default");
+    button.setAttribute("disabled", "disabled");
+    button.textContent = "準備中";
     let playerCount = document.getElementById("player_count").value;
     let players = [];
     for(i = 1; i <= playerCount; i++){
