@@ -14,6 +14,7 @@ class WordWolf {
                 }, this);
                 this.willConfirmWordPlayers = this.players;
                 callBack();
+                xhr.abort();
             }
         }.bind(this);
         xhr.send();
@@ -53,6 +54,45 @@ function startWordWolf() {
     );
 }
 
-window.onload = function () {
-    sessionStorage.setItem('key', 'value');
+function onPlayerCountChanged(selectBox) {
+    alert(selectBox.value);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    let defaultValues = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+    let selectElement = document.getElementById("player_count");
+    let configFormElement = document.getElementById("playing-config");
+    for (let i = 3; i <= 10; i++) {
+        if (i >= 3) {
+            let optionElement = document.createElement("option");
+            optionElement.value = i;
+            optionElement.textContent = i + "人";
+            if (i === 4) {
+                optionElement.selected = true;
+            }
+            selectElement.appendChild(optionElement);
+        }
+        let inputPlayerNameLabel = document.createElement("label");
+        inputPlayerNameLabel.setAttribute("for", "player" + i);
+        inputPlayerNameLabel.textContent = i + "人目のプレーヤー";
+        let inputPlayerNameText = document.createElement("input");
+        inputPlayerNameText.setAttribute("type", "text");
+        inputPlayerNameText.setAttribute("class", "form-control players");
+        inputPlayerNameText.setAttribute("id", "player" + i);
+        inputPlayerNameText.value = defaultValues[i - 0];
+        let playerInputDiv = document.createElement("div");
+        playerInputDiv.setAttribute("class", "form-group")
+        playerInputDiv.appendChild(inputPlayerNameLabel);
+        playerInputDiv.appendChild(inputPlayerNameText);
+        configFormElement.appendChild(playerInputDiv);
+    }
+    // for(let i =  WordWolf.minPlayerCount; i <= WordWolf.maxPlayerCount; i++){
+    //     let optionElement = document.createElement("option");
+    //     optionElement.value = i;
+    //     optionElement.textContent = i + "人";
+    //     if(i === WordWolf.defaultPlayerCount){
+    //         optionElement.selected = true;
+    //     }
+    //     selectElement.appendChild(optionElement);
+    // }
+});
