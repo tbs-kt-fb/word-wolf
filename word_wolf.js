@@ -97,13 +97,4 @@ document.addEventListener('DOMContentLoaded', function () {
         configFormElement.appendChild(playerInputDiv);
     }
     onPlayerCountChanged(4);
-    // for(let i =  WordWolf.minPlayerCount; i <= WordWolf.maxPlayerCount; i++){
-    //     let optionElement = document.createElement("option");
-    //     optionElement.value = i;
-    //     optionElement.textContent = i + "人";
-    //     if(i === WordWolf.defaultPlayerCount){
-    //         optionElement.selected = true;
-    //     }
-    //     selectElement.appendChild(optionElement);
-    // }
 });
