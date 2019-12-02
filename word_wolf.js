@@ -40,13 +40,13 @@ function getRandomInt(max) {
 
 
 function startWordWolf() {
-    let players = document.getElementsByClassName("players");
+    let playerCount = document.getElementById("player_count").value;
+    let players = [];
+    for(i = 1; i <= playerCount; i++){
+        players.push(document.getElementById("player" + i).value);
+    }
     let wordWolfGame = new WordWolf(
-        Array.prototype.map.call(players,
-            function (element) {
-                return element.value;
-            }
-        )
+        players
         , function () {
             sessionStorage.setItem('current_wf_game', JSON.stringify(wordWolfGame));
             window.location.href = "player_confirm.html";
@@ -54,15 +54,24 @@ function startWordWolf() {
     );
 }
 
-function onPlayerCountChanged(selectBox) {
-    alert(selectBox.value);
+
+function onPlayerCountChanged(number){
+    for(i = 4; i <= 10; i++){
+        let groupPlayerDiv = document.getElementById("group-player" + i);
+        if( i <= number){
+            groupPlayerDiv.style.display = "block";
+        }else{
+            groupPlayerDiv.style.display = "none";
+        }
+    }
+    
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     let defaultValues = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     let selectElement = document.getElementById("player_count");
     let configFormElement = document.getElementById("playing-config");
-    for (let i = 3; i <= 10; i++) {
+    for (let i = 1; i <= 10; i++) {
         if (i >= 3) {
             let optionElement = document.createElement("option");
             optionElement.value = i;
@@ -79,13 +88,15 @@ document.addEventListener('DOMContentLoaded', function () {
         inputPlayerNameText.setAttribute("type", "text");
         inputPlayerNameText.setAttribute("class", "form-control players");
         inputPlayerNameText.setAttribute("id", "player" + i);
-        inputPlayerNameText.value = defaultValues[i - 0];
+        inputPlayerNameText.value = defaultValues[i - 1];
         let playerInputDiv = document.createElement("div");
         playerInputDiv.setAttribute("class", "form-group")
+        playerInputDiv.setAttribute("id", "group-player" + i);
         playerInputDiv.appendChild(inputPlayerNameLabel);
         playerInputDiv.appendChild(inputPlayerNameText);
         configFormElement.appendChild(playerInputDiv);
     }
+    onPlayerCountChanged(4);
     // for(let i =  WordWolf.minPlayerCount; i <= WordWolf.maxPlayerCount; i++){
     //     let optionElement = document.createElement("option");
     //     optionElement.value = i;
