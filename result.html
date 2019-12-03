@@ -12,38 +12,27 @@
 
 <body>
     <div class="container">
-        <div class="row">
-            <h1>結果</h1>
+        <h1 class="text-center">結果</h1>
+        <div class="alert alert-warning">
+            <p class="h3 text-left">少数派</p>
+            <p class="h3 text-left">テーマワードは<span id="minor_word"></span>です</p>
+            <p class="h3 text-left">プレーヤーは</p>
+            <div class="row">
+                <ul class="h3" id="minor_players">
+                </ul>
+            </div>
+        </div>
+        <div class="alert alert-primary">
+            <p class="h3 text-left">多数派</p>
+            <p class="h3 text-left">テーマワードは<span id="major_word"></span>です</p>
+            <p class="h3 text-left">プレーヤーは</p>
+            <div class="row">
+                <ul class="h3" id="major_players">
+                </ul>
+            </div>
         </div>
         <div class="row">
-            <p>少数派</p>
-        </div>
-        <div class="row">
-            <p>テーマワードは<span id="minor_word"></span>です</p>
-        </div>
-        <div class="row">
-                <p>プレーヤーは</p>
-            </div>    
-        <div class="row">
-            <ul id="minor_players">
-            </ul>
-        </div>
-        
-        <div class="row">
-            <p>多数派</p>
-        </div>
-        <div class="row">
-            <p>テーマワードは<span id="major_word"></span>です</p>
-        </div>
-        <div class="row">
-            <p>プレーヤーは</p>
-        </div>
-        <div class="row">
-            <ul id="major_players">
-            </ul>
-        </div>
-        <div class="row">
-            <button class="btn btn-primary" onclick="window.location.href='index.html'">開始画面に戻る</button>
+            <button class="btn btn-primary  btn-lg btn-block" onclick="window.location.href='index.html'">開始画面に戻る</button>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
