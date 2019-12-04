@@ -1,35 +1,34 @@
-let timerElement;
-let time;
 document.addEventListener('DOMContentLoaded', function () {
-    timerElement = document.getElementById("timer-count");
-    time = 60 * 3;
-    displayTimer(time);
+    displayTimer(document.getElementById("timer-count"), getGameSeconds());
 });
+
+function getGameSeconds() {
+    return Number(document.getElementById("timer-minuite").value) * 60;
+}
 
 function startTimer(button){
     button.setAttribute("disabled", "disabled");
-    updateTimer(time);
+    updateTimer(document.getElementById("timer-count"), getGameSeconds());
 }
 
-function updateTimer(secconds) {
+function updateTimer(target, secconds) {
     setTimeout(function () {
         secconds -= 1;
         if (secconds <= 0) {
             secconds = 0;
         }else{
-            updateTimer(secconds);
+            updateTimer(target, secconds);
         }
-        displayTimer(secconds);
-        
+        displayTimer(target, secconds);
     }, 1000);
 }
 
-function displayTimer(millisecconds){
-    let minuite = ('00' + Math.floor(millisecconds / 60)).slice(-2);
-    let second = ('00' + (millisecconds % 60)).slice(-2);
-    if(millisecconds === 0){
-        timerElement.textContent = "タイムアップ！"
+function displayTimer(target, currentSeconds){
+    let minuite = ('00' + Math.floor(currentSeconds / 60)).slice(-2);
+    let second = ('00' + (currentSeconds % 60)).slice(-2);
+    if(currentSeconds === 0){
+        target.textContent = "タイムアップ！"
     }else{
-        timerElement.textContent = minuite + ":" + second;
+        target.textContent = minuite + ":" + second;
     }
 }
