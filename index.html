@@ -12,15 +12,59 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center">ワードウルフ</h1>
-        <form id="playing-config">
-            <div class="form-group">
-                <label for="player_count">プレーする人数</label>
-                <select class="custom-select" id="player_count" onchange="onPlayerCountChanged(this.value)">
-                </select>
+        <div id="index">
+            <h1 class="text-center">ワードウルフ</h1>
+            <form id="playing-config">
+                <div class="form-group">
+                    <label for="player_count">プレーする人数</label>
+                    <select class="custom-select" id="player_count" onchange="onPlayerCountChanged(this.value)">
+                    </select>
+                </div>
+            </form>
+            <button class="btn btn-primary btn-lg btn-block" onclick="startWordWolf(this)">開始する</button>
+        </div>
+        <div id="player_confirm" style="display: none;">
+            <h1 class="text-center">テーマワード確認</h1>
+            <p class="h3 text-center"><span id="plyaer_name"></span>さんのテーマワードの確認画面です</p>
+            <button class="btn btn-warning btn-lg btn-block" onclick="showThemeArea()">テーマを確認する</button>
+            <div id="theme_word_area" hidden>
+                <p class="h3 text-center">テーマワードは</p>
+                <p class="display-1 text-center"><span id="theme_word"></span><br />です</p>
+                <button class="btn btn-primary btn-lg btn-block" onclick="viewNextPage('player_confirm')">確認した</button>
             </div>
-        </form>
-        <button class="btn btn-primary btn-lg btn-block" onclick="startWordWolf(this)">開始する</button>
+        </div>
+        <div id="playing" style="display: none;">
+            <p class="h1 text-center">トーク</p>
+            <p class="h4 text-center">誰がマイナーか探し出せ！</p>
+            <p class="h4 text-center">マイナーだと自覚したらバレないように！</p>
+            <input id="timer-minuite" type="hidden" value="3" />
+            <button class="btn btn-primary btn-lg btn-block" onclick="startTimer(this)">スタート</button>
+            <p class="display-1 text-center" id="timer-count"></p>
+            <button class="btn btn-warning btn-lg btn-block" onclick="viewNextPage('result')">結果を確認する</button>
+        </div>
+        <div id="result" style="display: none;">
+            <h1 class="text-center">結果</h1>
+            <div class="alert alert-warning">
+                <p class="h3 text-left">少数派</p>
+                <p class="h3 text-left">テーマワードは<span id="minor_word"></span>です</p>
+                <p class="h3 text-left">プレーヤーは</p>
+                <div class="row">
+                    <ul class="h3" id="minor_players">
+                    </ul>
+                </div>
+            </div>
+            <div class="alert alert-primary">
+                <p class="h3 text-left">多数派</p>
+                <button class="btn btn-danger  btn-lg btn-block" onclick="showMajorTheme(this)">テーマワードを確認する</button>
+                <p class="h3 text-left" id="major_word_text"style="display: none;">テーマワードは<span id="major_word" ></span>です</p>
+                <p class="h3 text-left">プレーヤーは</p>
+                <div class="row">
+                    <ul class="h3" id="major_players">
+                    </ul>
+                </div>
+            </div>
+            <button class="btn btn-primary  btn-lg btn-block" onclick="window.location.href='index.html'">開始画面に戻る</button>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
